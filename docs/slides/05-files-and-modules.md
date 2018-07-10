@@ -1,4 +1,4 @@
-# Files and Modules 
+# 檔案與模組
 ### Pycubator
 
 ---

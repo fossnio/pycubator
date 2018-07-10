@@ -1,5 +1,5 @@
 <!-- .slide: data-background="img/puzzles.jpg" -->
-# Variables and Simple Data Types
+# 變數與簡單的資料類型
 
 ### Pycubator
 

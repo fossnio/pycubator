@@ -1,4 +1,4 @@
-# Object Orientation
+# 物件導向
 <!-- .slide: data-background="img/3D-Object-Pictures.jpg" -->
 
 --

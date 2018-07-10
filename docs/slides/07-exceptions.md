@@ -1,4 +1,4 @@
-# Exceptions
+# 例外
 <!-- .slide: data-background="img/puzzles.jpg" -->
 
 ---

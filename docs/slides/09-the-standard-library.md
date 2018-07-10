@@ -1,5 +1,5 @@
 
-# The Standard Library
+# 標準函式庫
 
 ---
 

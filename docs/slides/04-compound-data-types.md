@@ -1,4 +1,4 @@
-# Compound Data Types
+# 資料類型的組合技
 <!-- .slide: data-background="img/puzzles.jpg" -->
 
 --
