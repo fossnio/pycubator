@@ -1,33 +1,38 @@
 # Pycubator
 
-Live slides are at [pycubator.com][pyc]
+英文原始版的投影片可在 [pycubator.com][pyc] 瀏覽觀看。
 
-Pycubator (Python Incubator) is a collection of slides and exercises for teaching Python.
-These slides are meant to be used in a teacher-led classroom, but also, put a strong emphasis on student exploration and participation. 
+Pycubator (Python 孵化器課程) 是由一系列的投影片與練習題所組合而成。
+這些投影片希望可以用在教師帶領的教學課程，也希望可以強化學生探索與參與的可能性。
 
-It utilizes [RevealJS][rjs] to create stunning slides, that are actually written in Markdown and hence easy to use with source control, and the exercises uses [Jupyter notebooks][jn] to reduce the amount boilerplate code the students needs to write. 
+本課程使用 [RevealJS][rjs] 產生漂亮的投影片，且內容其實是使用 Markdown 語法撰寫，所以非常容易搭配版控使用，練習使用 [Jupyter notebooks][jn] 以降低學生需撰寫重複程式碼的狀況。
 
-Pycubator leading principles are:
+Pycubator 宗旨如下：
 
--   Talk less, practice more.
--   Real world examples
+-   少說，多練。
+-   真實環境的範例
 
-## Running locally
--   Run `python3 build.py` script to generate the HTML files.
--   Run `cd docs && python3 -m http.server` and open your browser!
+## 在本機執行
+-   執行 `pipenv install` 安裝相依的套件。
+-   執行 `pipenv shell` 進入虛擬環境。
+-   執行 `python3 build.py` 產生 HTML 檔案。
+-   執行 `cd docs && python3 -m http.server` 並開啟瀏覽器瀏覽！
 
-## Contributing
--   Slides are at `docs/slides/` and are in MD form so it's very easy to edit them.
--   Exercises are Jupyter (IPython) notebooks residing at `docs/exercises`.
--   After making some changes follow [running locally](#running-locally)
+## 如何貢獻
+-   投影片位在 `docs/slides/` 且為 MD 格式，所以非常容易編輯。
+-   練習題為 Jupyter (IPython) notebooks ，位在 `docs/exercises` 。
+-   若有修改，參照 [running locally](#running-locally) 產生新版內容。
 
-## Contributors
+## 貢獻者
 * [Noam Elfanbaum](https://twitter.com/noamelf)
 * [Udi Oron](https://twitter.com/nonZero)
 
+## 翻譯者
+* [William Wu](https://github.com/williamwu0220)
+
 ---
 
-[![This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License][cc-img]][cc-site]
+[![本課程使用 Creative Commons Attribution-ShareAlike 4.0 International 授權][cc-img]][cc-site]
 
 
 [cc-img]: https://i.creativecommons.org/l/by-sa/4.0/88x31.png
