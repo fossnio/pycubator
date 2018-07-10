@@ -16,6 +16,8 @@ Pycubator 宗旨如下：
 -   執行 `pipenv install` 安裝相依的套件。
 -   執行 `pipenv shell` 進入虛擬環境。
 -   執行 `python3 build.py` 產生 HTML 檔案。
+-   執行 `git submodules init` 將 reveal.js 相依引入。
+-   執行 `git submodules update` 同步 reveal.js 的 repo 並放至 `docs/revealjs` 目錄。
 -   執行 `cd docs && python3 -m http.server` 並開啟瀏覽器瀏覽！
 
 ## 如何貢獻
