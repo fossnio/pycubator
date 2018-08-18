@@ -3,72 +3,72 @@
 
 ---
 
-# Files
+# 檔案操作
 <!-- .slide: data-background="img/files.jpg" -->
 The National Archives UK
 
 --
-### Opening Files
+### 開啟檔案
 
-- `open(name, mode)` returns a file-object
-- `name` is the path of the file to open
-- `mode`:
-    - `'r'` (read): the file is open in read-only mode
-    - `'w'` (write): the file is open in write-only mode, and is truncated.
-    - `'a'` (append): like 'w' but appends to the file
-    - `'x'`: like 'w' but the file must not exist already
-- `open(name)` defaults to read: `open(name, 'rt')`
+- `open(name, mode)` 回傳一個檔案物件
+- `name` 是要開啟的檔案路徑
+- `mode`：
+    - `'r'` (read): 檔案以唯讀模式開啟
+    - `'w'` (write): 檔案以唯寫模式開啟，且檔案內容整個清空重頭開始
+    - `'a'` (append): 類似 'w' 但內容不清空，繼續從檔案尾端繼續寫入
+    - `'x'`: 類似 'w' 但檔案必須不存在
+- `open(name)` 預設為唯讀模式開啟檔案： `open(name, 'rt')`
 
 --
-### Closing
+### 關閉檔案
 - `f.close()`:
-    - Release the file handles
-    - Write the file object content to disk
-- Can be done alternatively using the `with` statement:
+    - 釋放該檔案物件所佔用的資源
+    - 將暫存尚未寫入的內容寫入硬碟
+- 可配合 `with` 陳述式使用:
 
-        with open('example.txt') as f:
+        with open('example.txt') as f: # 離開此區塊就自動釋放資源
             print(f.read())
 
 --
-### Reading
-- `f.read()` reads the whole file (up to `EOF`)
-- `f.read(index)` reads the file until `index`
+### 讀取
+- `f.read()` 讀取整個檔案內容 (讀到 `EOF`)
+- `f.read(size)` 讀取檔案內容 `size` 個字元
 
-        # Prints each line of the file.
+        # 印出每一行內容
         with open('example.txt') as f:
             for l in f:
                 print(l)
 
 --
-### Writing
-- `f.write(string)` writes string (without adding `\n`)
-- `f.writelines(sequence)` writes sequence content (also without adding `\n`)
+### 寫入
+- `f.write(string)` 寫入字串 (沒有 `\n`)
+- `f.writelines(sequence)` 寫入序列性的內容 (一樣沒有 `\n`)
 
         fruits = ['Bannana', 'Melon', 'Peach']
         with open('example.txt', 'w') as f:
             f.writelines(fruits)
 
 --
-###### Exercises
+###### 練習
 
 [Working with files](http://lms.10x.org.il/item/35/)
 
 ---
 
-# Modules and packages
+# 模組與套件
 
 --
-### The import statement
+### import 陳述式
 
-- Allow use of other python files and libraries
+- 可使用其他 python 的檔案與函式庫
 - Imports: `import math`
 - Named imports: `import math as m`
 - Specific imports: `from math import pow`
-- Import all: `from math import *` (dangerous! used only in very specific cases)
+- Import all: `from math import *` (危險！只用在特別狀況！)
 
 --
 
-### Modules
+### 模組
 
     # utensils.py
     def eat_soup():
@@ -83,18 +83,16 @@ The National Archives UK
     print(eat_soup())
 
 --
-### Packages
+### 套件
 
--   Packages are namespaces which contain multiple packages and modules themselves.
--   Packages are simply directories, but there is a twist: each package/directory
-    MUST contain a special file called `__init__.py`
--   Not putting an `__init__.py` file in a Python3 package will work but that's
-    [another story](https://www.python.org/dev/peps/pep-0420/)
+-   套件是命名空間，其下可再包含多個套件與模組
+-   套件其實就是目錄，但有個地方比較特別：每個套件/目錄下 **必須** 有個檔案叫作 `__init__.py`
+-   在 Python 3 中套件目錄下可以不要有 `__init__.py` 但那是 [另一個故事](https://www.python.org/dev/peps/pep-0420/)
 
 --
 ```python
 # fruits/__init__.py
-# -- empty -- nothing here -- really nothing -- just a lonely, empty file
+# -- 空的 -- 我是空的 -- 我真的是空的 -- 我真的是一個什麼內容都沒有的空檔案
 
 # fruits/apple.py
 def print_it():
@@ -106,7 +104,7 @@ apple.print_it()
 ```
 --
 
--   If a folder contains an `__init__.py` file, it can be imported as the name of the package itself.
+-   如果一個目錄中有一個 `__init__.py` 檔案，那麼該目錄名稱就可以當作是套件名稱可用來被 import。
 
         # foo/__init__.py
         def greeting():
@@ -117,8 +115,8 @@ apple.print_it()
         print(greeting())
 
 --
-##### advanced
-### Modules are singletons
+##### 進階
+### 模組是 singletons
 
     # stuff.py
     fruits = ['Pineapple']
