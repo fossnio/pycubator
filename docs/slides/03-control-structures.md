@@ -4,84 +4,81 @@
 ### Pycubator
 
 --
-### Blocks
+### 區塊
 
--   All control structures (if, while/for, functions) content must be in a block.
--   Block are determined by indentation.
--   The pep8 style guides set 4 spaces to be the standard indentation.
--   If you are using Tab to indent make sure your editor converts it to 4 spaces.
+-   所有的控制結構 (if, while/for, 函式) 內容必須在區塊內。
+-   區塊是根據縮排來判定的。
+-   pep8 程式碼風格指南建議使用 4 個空白作為標準的縮排。
+-   如果你正在使用 Tab 作為縮排，要確認你的編輯器會將其轉換為 4 個空白。
 
         if True:
-            print('Yes it is')
+            print('沒錯就是這樣')
 
 ---
 
-# If and While
+# if 與 while
 
 --
-### Simple if
+### 簡單的 if
 
-    x = int(input())  # Remember to use raw_input() in python2
+    x = int(input())  # 在 python 2 中記得使用 raw_input()
     if x > 5:
-        msg = 'Higher than five'
+        msg = '大於 5'
     elif x == 5:
-        msg = 'Equals five'
+        msg = '等於 5'
     else:
-        msg = 'Lower than five'
+        msg = '小於 5'
     print(msg)
 
 --
-### Ternary operator
+### 三元運算子
 
     x = int(input())
-    msg = 'Higher than five' if x > 5 else 'Equal or lower than five'
+    msg = '大於 5' if x > 5 else '小於等於 5'
     print(msg)
 
 --
-### Simple while
+### 簡單的 while
 
     while True:
-        name = input('Enter your name: ')
-        print('Hello {}!'.format(name))
+        name = input('輸入你的名字')
+        print('哈囉 {}!'.format(name))
 
 --
-### Break and continue:
+### break 與 continue:
 
     SECRET = 'xyzzy'
 
     while True:
-        password = input('Please enter your password: ')
+        password = input('請輸入你的密碼：')
         if not password:
             continue
         elif password == SECRET:
             break
 
-        print('Wrong password!')
+        print('密碼錯誤！')
 
 
-    print('Welcome!')
+    print('歡迎！')
 
 --
-###### Exercises
+###### 練習
 
 `while` and `if` [exercises](http://lms.10x.org.il/item/12/)
 
 ---
 
-# For loops
+# for 迴圈
 
 --
-### For on a string
-
-    # Make Python2 print compatible with Python3
-    from __future__ import print_function
+### 在字串上使用 for
 
     >>> for c in 'Hello World!':
             print(c, end=' ')
     H e l l o   W o r l d !
 
 --
-### Using range()
+### 使用 range()
 
     >>> for i in range(10):
             print(i, end=',')
@@ -96,22 +93,22 @@
     10,9,8,7,6,5,4,3,2,1,
 
 --
-### Range definition
+### range() 的行為
 
-*   `range(n)` produces `[0, 1, ..., n-1]`
-*   `range(i, j)` produces `[i, i+1, ..., j-1]`
-*   `range(i, j, k)` produces `[i, i+k, ..., m]`
+*   `range(n)` 產生 `[0, 1, ..., n-1]`
+*   `range(i, j)` 產生 `[i, i+1, ..., j-1]`
+*   `range(i, j, k)` 產生 `[i, i+k, ..., m]`
 
 --
 
-### Nested loops
+### 巢狀迴圈
 
     for i in range(10):
         for j in range(10):
             print(i, j)
 
 --
-### Enumerate
+### enumerate()
     >>> for i, c in enumerate('Hello World!'):
             print(i, c)
     0 H
@@ -128,29 +125,29 @@
     11 !
 
 --
-###### Exercises
+###### 練習
 [for loops](http://lms.10x.org.il/item/15/)
 
 ---
 
-# Functions
+# 函式
 
 --
-### Definition
+### 定義
 
     >>> def increment(x):
             return x + 1
     >>> increment(3)
     4
 
-*   Colon (:) indicates start of a block
-*   Following lines are indented
-*   Function declaration doesn't specify return type
-*   All functions return a value (None if not specified)
-*   Parameter data types are not specified either
+*   冒號 (:) 代表一個區塊的開始
+*   隨後的程式碼皆要縮排
+*   函式定義不指定回傳的型別
+*   所有的函式都會回傳一個值 (若沒有指定則回傳 None)
+*   傳入的參數型別也一樣不指定
 
 --
-###### Exercise
+###### 練習
 
 [Functions](http://lms.10x.org.il/item/145/)
 (Progress bar, 2 exercises)
