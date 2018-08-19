@@ -3,34 +3,34 @@
 
 --
 
-### Class statement
+### class 陳述式
 
     class Foo:        #python2 Foo(object):
         pass
 
 - `class Foo` &srarr; `class Foo(object)`
-- Classes are ways to define new objects
-- Creates a new class object named Foo
-- Class definitions create a new namespace (scope)
-- Variables defined in the class body are *class attributes*
-- Functions defined in the class body are *instance methods*
+- 類別是用來定義一個新物件的方法
+- 建立一個新類別物件，名稱叫作 Foo
+- 類別定義會產生一個新的命名空間 (scope)
+- 定義在類別內的變數為 *類別參數*
+- 定義在類別內的函式為 *實體方法*
 
 --
-### Constructors
+### 建構子
 
     class Circle:
         def __init__(self, radius):
             self.r = radius
 
-- `__init__` initializes an instance of the class
+- `__init__` 初始化一個類別實體
 - `x = Circle()`
-    - Creates an object of type `Circle`
-    - Calls `Circle.__init__(self)`
-    - Binds self to the name x
+    - 建立一個類別為 `Circle` 的物件
+    - 呼叫 `Circle.__init__(self, radius)`
+    - 將 self 綁定至名稱 x
 
 --
 
-### Instance methods
+### 實體方法
 
     class Circle:
         def __init__(self, radius=5):
@@ -38,13 +38,13 @@
         def get_perimter(self, a, b):
             return 2 * math.pi * self.r
 
--   Instance method definitions must use self as the first argument
+-   實體方法的定義必須使用 self 作為第一個參數
 
 --
-### Private by convention
+### 私有方法的慣例語法
 
--   A leading `_` means use at your own risk
--   "We're all adults here": you can still access any variable that you want
+-   開頭為底線的 `_` 變數名稱意思是：若要直接使用它風險自負
+-   "We're all adults here": 你可以存取任何你想存取的變數
 
         class Circle:
             _pi = 3.14
@@ -54,28 +54,28 @@
                 return 2 * self._pi * self.r
 
 --
-###### Exercise
+###### 練習
 [Python Classes](http://lms.10x.org.il/item/46/)
 
 ---
 
-# Inheritance
+# 繼承
 <!-- .slide: data-background="img/William_Hogarth_Inheritance.jpg" -->
 From William Hogarth's [A Rake's Progress](http://en.wikipedia.org/wiki/A_Rake%27s_Progress).
 "The Young Heir Takes Possession Of The Miser's Effects".
 --
 
-### Single inheritance
+### 單一繼承
 
     class Circle(Shape):
         def __init__(self):
             super().__init__()     # python2 super(Circle, self).__init__()
             self.new_var = default
 
-- Super classes are arguments to the `class` statement
-- `object` is the default base class
-- `class Circle(Shape)`: inherits from Shape
-- Make sure to call the `__init__` of the super class
+- 父類別是 `class` 陳述式中作為參數傳入的
+- `object` 是預設的父類別 (base class)
+- `class Circle(Shape)`：繼承 Shape 類別
+- 記得要呼叫父類別的 `__init__` 方法
 
 --
 
@@ -122,55 +122,55 @@ print(u.render("hello"))
 
 --
 
-##### advanced
-## Multiple inheritance
+##### 進階
+## 多重繼承
 
     class Circle(Shape, Drawable):
         def __init__(self):
             super().__init__(self)
 
-- You can inherit from multiple super classes
-- Attributes will be resolved via the MRO (Method Resolution Order)
+- 你可以繼承多個父類別
+- 參數查找將會使用 MRO (Method Resolution Order) 順序，先找到的先用
 - `Circle.mro()`
 
 --
 
-###### Exercise
+###### 練習
 [Class inheritance](http://lms.10x.org.il/item/116/)
 
 ---
 
-##### Advanced
-# Python Magic! (methods)
+##### 進階
+# Python 魔法！ (方法)
 <!-- .slide: data-background="img/magic_mist.jpg" -->
 
 --
 ## Magic Methods
 
-- *Syntactic sugar* is done with magic methods
-- Methods of the form `__method_name__` are "magic"
-- Things like `f()` and `seq[i]` are magic method calls
+- *語法糖衣* 是使用 magic methods 達成
+- 凡方法名稱是命名為 `__method_name__` 皆是 "magic"
+- 像是 `f()` 與 `seq[i]` 都是 magic method 呼叫
 
 --
 
 ## __new__, __init__, __call__
 - `x = C()` &srarr; `x = C.__init__(C.__new__())`
-    - `__new__` creates a new object
-    - `__init__` initializes it
+    - `__new__` 建立新實體
+    - `__init__` 初始化該實體
 - `x(arg,...)` &srarr; `x.__call__(arg,...)`
 
 --
 
 ## __str__, __repr__
 - `str(x)` &srarr; `x.__str__()`
-    - Returns a human readable string
+    - 回傳人類易讀易懂的字串
 - `repr(x)` &srarr; `x.__repr__()`
-    - Returns a complete description of object
+    - 回傳該物件的字面語法
 
 
 --
 
-## Comparisons
+## 比較
 - `x < y` &srarr; `x.__lt__(y)`
 - `x > y` &srarr; `x.__gt__(y)`
 - `x <= y` &srarr; `x.__le__(y)`
@@ -180,70 +180,70 @@ print(u.render("hello"))
 
 --
 
-## Arithmetic operations
-- All the arithmetic operators have magic methods
+## 數學運算子
+- 所有數學運算子都有 magic methods
 - `__add__, __sub__, __mod__, __xor__, ...`
-- Additional methods for += and others
+- 對於 += 與其他額外的運算子也有對應的 magic methods
 
 ---
 
-##### advanced
-# Advanced topics
+##### 進階
+# 進階主題
 
 --
-### Attribute Lookups
-- `Foo.__dict__` is a dictionary storing class attributes
-- `Foo.val` translates to `Foo.__dict__['val']`
-- Given `x = Foo()` then `x.__dict__` is a dictionary storing instance attributes
-- x.val translates to:
-    - `x.__dict__['val']` if val is an instance attribute
-    - `Foo.__dict__['val']` if there is no instance attribute named val but there is a class attribute named val
+### 參數查找
+- `Foo.__dict__` 是一個存放類別參數的 dictionary
+- `Foo.val` 會轉譯成 `Foo.__dict__['val']`
+- 當執行 `x = Foo()` 後 `x.__dict__` 會存放實體參數
+- x.val 轉譯成：
+    - `x.__dict__['val']` 如果 val 是一個實體參數
+    - `Foo.__dict__['val']` 如果沒有名為 val 的實體參數，但存在名為 val 的類別參數
 
 --
 
-### Static methods
+### 靜態方法
 
     class Circle:
         @staticmethod
         def radius_to_perimeter(r):
             return 2 * math.pi * r
 
--   Attach functions to classes (with similar context)
--   A static method doesn't receive a self argument
--   Static methods should not depend on class attributes
+-   讓方法依附至類別本身 (with similar context)
+-   靜態方法不需傳入 self 參數
+-   靜態方法不該相依於任何類別參數
 
 --
 
-### Class methods
+### 類別方法
 
     class Circle:
         @classmethod
         def from_circumference(cls, circ):
             return cls(circ/(2 * math.pi))
 
-- A class method gets the class object as self.
-- Alternative constructor.
-- Call the first argument cls.
+- 一個類別方法將類別物件視做第一個參數傳入
+- 可用來實作另一種建構子。
+- 呼叫第一個參數 cls。
 
 --
 
-### Private attributes
+### 私有參數
 
 - `__`
-    - A leading __ is used to prevent subclasses from accidentally overwriting stuff
-    - It does so by triggering *name mangling*:
+    - 開頭為 __ 是用來避免繼承的類別意外的覆蓋掉父類別同名的參數
+    - 它觸發以下的名稱變動 (*name mangling*) 以避免上述意外：
         - `__some_var` &srarr; `_classname__some_var`
-        - classname is the name of the class which `__some_var` was defined in
-    - If you know the classname and variable you can do the mangling yourself
+        - classname 是類別名稱，附加在原定義的 `__some_var` 參數名稱之前
+    - 如果你知道類別名稱與變數名稱，也可以自己實作這行為
 
 --
 
-## No getters and setters???
-- Python's `@property` and `@attr.setter` replace the need for getters and setters
-- Decorate method with `@property` to replace attribute getter
-    - Gets called in `x.attr`
-- Decorate with `@attr.setter` to replace attribute setter
-    - Gets called in `x.attr = val`
+## 沒有 getters 與 setters？？？
+- Python 的 `@property` 與 `@attr.setter` 取代了 getters 與 setters 的需求
+- 使用 `@property` 裝飾方法來取代 attribute getter
+    - 執行 `x.attr` 時會被呼叫
+- 使用 `@attr.setter` 裝飾方法來取代 attribute setter
+    - 執行 `x.attr = val` 時會被呼叫
 
 --
 
@@ -263,19 +263,19 @@ print(c.area)
 ```
 
 --
-## `Super` - deep dive
+## `Super` - 深入研究
 
 - `super(cls, obj)` &srarr; `super(C, self)`
-    - When wish to call super outside a class method you need to provide it with the class name and it's content.
+    - 如果你想要在類別外呼叫 super 時可以使用此語法，傳入類別名稱與對應的實體。
     - Class that precedes cls in the MRO of obj
     - It's bound &srarr; obj gets inserted into method calls
 - `super()`
-    - when called in an instance method of a class, will call it's root class.
+    - 可用在該類別的實體方法中，可調用其父類別。
 
 --
 ## getattr
 - `x.value` &srarr; `getattr(x, 'value')`
-- Useful when the attribute name is defined at runtime
-- `getattr(self, name)` calls `__getattribute__(self, name)` which falls back on `__getattr__(self, name)`
-- Defining `__getattr__` is useful to specify default values
-- `getattr(x, 'value', default)` lets you give a default if everything else fails
+- 當參數名稱是在 runtime 時產生時很有用
+- `getattr(self, name)` 呼叫 `__getattribute__(self, name)` ，若不存在則再呼叫 `__getattr__(self, name)`
+- 定義 `__getattr__` 在需要指定預設值時很有用
+- `getattr(x, 'value', default)` 讓你在所有呼叫都失敗時仍然有個預設值
