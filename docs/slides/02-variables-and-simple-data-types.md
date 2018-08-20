@@ -328,8 +328,8 @@ Python 布林類型的字面常數為 `True` 與 `False`。
 
 -   positional formatting
 
-        >>> print('{0} {0}, {1}'.format('重複我','不要重複我'))
-        重複我重複我不要重複我
+        >>> print('{0} {0}，{1}'.format('重複我','不要重複我'))
+        重複我 重複我，不要重複我
 
 --
 

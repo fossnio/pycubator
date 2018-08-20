@@ -1,4 +1,4 @@
-# 資料類型的組合技
+# 資料型別的組合技
 <!-- .slide: data-background="img/puzzles.jpg" -->
 
 --
@@ -428,7 +428,6 @@
         for k, v in lst:
             d[k] = v
 
-
 - 變成這個：
 
         {k: v for k,v in lst}
@@ -459,7 +458,7 @@
 
 ---
 
-# 模組 builtins 中可用於可疊代物件的方法
+# 模組 builtins 中可用於疊代物件的方法
 
 --
 

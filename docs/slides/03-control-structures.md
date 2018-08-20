@@ -64,7 +64,7 @@
 --
 ###### 練習
 
-`while` and `if` [exercises](http://lms.10x.org.il/item/12/)
+`while` 與 `if` [exercises](http://lms.10x.org.il/item/12/)
 
 ---
 
