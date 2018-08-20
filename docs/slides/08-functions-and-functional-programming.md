@@ -4,7 +4,7 @@
 
 ---
 
-# Positional and Named Arguments
+# Positional 與 Named Arguments
 <!-- .slide: data-background="img/steen_argument_over_a_card_game.jpg" -->
 <small>Jan Steen, Argument over a Card Game, Wikimedia Commons.</small>
 
@@ -17,10 +17,9 @@
 
     func(a, b, c)
 
--   `arg1`, `arg2` and `arg3` are positional arguments
--   When calling `func` exactly 3 arguments must be given, wrong number of args will
-    result in a `TypeError`
--   The order in the call determines which arg they are bound to
+-   `arg1`, `arg2` 與 `arg3` 就是 positional arguments
+-   當呼叫 `func` 時，一定要傳入 3 個 arguments ，錯誤數量的參數會引發 `TypeError` 例外
+-   傳入的順序決定它會綁定至哪個參數
 
 --
 ### Named Arguments
@@ -33,7 +32,7 @@
     # output
     make my day
 
--   Named arguments can be given out of order
+-   因為可以指定名稱，所以順序可以任意
 
 
 --
@@ -45,38 +44,37 @@
 
     func(a, named2=b, named1=c)
 
--   After the regular args, default args are allowed
--   `val1` and `val2` are default values for those variables.
--   Omitting named arguments in a call uses the default value
+-   Default args 可以接在一般的 args 後面
+-   `val1` 與 `val2` 就是那些變數的預設值
+-   如果沒有傳入對應的參數，那預設值會被使用
 
 --
-##### advanced
-### Default Arguments gotcha
+##### 進階
+### Default Arguments 常見錯誤
 
--   Default arguments are evaluated when the function is defined
--   In all calls, the object that the expression evaluated to will be used.
--   If the default is mutable, updates in one call effect following calls
--   `def func(a=[])` Will mutate the default on each call
--   Use None as the default to avoid mutation
+-   Default arguments 會在定義函式時被執行
+-   在任何呼叫中，會使用初始計算完的結果作為其值。
+-   如果該預設值是可變動的型別，對於該參數的變動將會讓後續的呼叫都受到影響
+-   `def func(a=[])` 將會改變其後所有呼叫的預設值
+-   使用 None 作為預設值避免這個改變的問題
 
         def func(a=None):
             a = a or []
 
 --
-##### advanced
+##### 進階
 ### Memoization
 
--   Memoization is an optimization technique that stores results of
-function calls
--   The previously computed answers can be looked up on later calls
--   Use a dictionary default arg to store answers
+-   Memoization 是一種優化的作法，將函式呼叫運算的結果存在緩存中
+-   前面運算的結果可以在後面的呼叫中直接查找
+-   可以使用 dictionary 作為 default arg 來儲存結果
 -   `def func(arg, cache={}):`
--   Store answers in `cache[arg] = ans`
--   Check for arg in cache before doing any work
+-   儲存結果在 `cache[arg] = ans`
+-   在進行其他工作前先檢查 cache 中對應的 arg 索引
 
 ---
 
-# Args and KWArgs
+# Args 與 KWArgs
 <!-- .slide: data-background="img/argument-shadows.jpg" -->
 
 --
@@ -87,18 +85,18 @@ function calls
         print(args)
      func(1, 2, 3, 4)
 
-     # output:
+     # 輸出
     (2, 3, 4)
 
--   A variable number of positional arguments can be specified
--   Could use any identifier but `args` is conventional
--   `args` is a tuple of 0 or more objects
+-   任意數量的 positional arguments 可被傳入
+-   可以取任何名稱，但使用 `args` 是慣例
+-   `args` 是一個包含 0 或多個物件的 tuple
 
 --
-###### Exercise
-### List students
+###### 練習
+### 列出學生列表
 
--   Implement the `list_students` function
+-   實作 `list_students` 函式
 
         expected_result = '''0 Tim
         1 Tom
@@ -115,24 +113,24 @@ function calls
 
     foo(1,two=2, three=3)
 
-    # output
+    # 輸出
     {'two': 2, 'three': 3}
 
--   Use `**kwargs` at the end
--   Could use any identifier but `kwargs` is conventional
--   kwargs is a dictionary of strings to values
--   The keys of kwargs are the names of the keyword args
+-   於最後的位置使用 `**kwargs`
+-   可取任何名稱，但使用 `kwargs` 是慣例
+-   kwargs 是個存放字串為鍵的 dictionary
+-   kwargs 的鍵名要對應 keyword args
 
 --
-###### exercise
-Implement `person_details` with kwargs
+###### 練習
+實作 `person_details` 並傳入 kwargs
 ```python
-# output
+# 輸出
 assert person_details(name='Mike', age=28) == 'Mike is 28 years old'
 ```
 --
 
-### `*` in Function Call
+### 在函式呼叫中使用 `*`
 
     def bar(arg1, arg2, arg3):
         print(arg1+arg2+arg3)
@@ -140,14 +138,14 @@ assert person_details(name='Mike', age=28) == 'Mike is 28 years old'
     l = [1, 2, 3]
     bar(*l)
 
-    # output
+    # 輸出
     6
 
-- `l` is an iterable
-- It gets unpacked as the positional arguments of `bar`
+- `l` 是可疊代的
+- 它會被展開，就像是 `bar` 的 positional arguments 一樣
 
 --
-### `**` in Function Call
+### 在函式呼叫中使用 `**`
 
     def print_person(name, age):
         print('{} is {} years old'.format(name, age))
@@ -155,63 +153,63 @@ assert person_details(name='Mike', age=28) == 'Mike is 28 years old'
     person = {'name': 'Mike', 'age': 28}
     print_person(**person)
 
-    # output
+    # 輸出
     Mike is 28 years old
 
 
-- `person` must be a dictionary of form `{'string': val, ...}`
-- It gets unpacked as the keyword arguments of `print_person`
+- `person` 必須是 `{'string': val, ...}` 的 dictionary
+- 它會被展開，就像是 `print_person` 的 keyword arguments 一樣
 
 
 --
-##### advanced
-### iterator expansion
+##### 進階
+### 疊代器展開
 
     a, *the_rest = range(4)
     print(the_rest)
 
-    # output
+    # 輸出
     (1, 2, 3)
 
 
--   Only works on Python3
--   `a,*var_name = range(5)`: `var_name` is list taking 0 or more values
+-   只能在 Python 3 上跑
+-   `a,*var_name = range(5)`: `var_name` 是一個含 0 或多個值的 list
 
 --
-##### advanced
+##### 進階
 ### Required Keyword Args
 
--   Python3 only
--   Any args after `*args` are keyword args
--   If there is no default value specified, they are required keyword args
+-   Python 3 限定
+-   任何在 `*args` 之後的參數都是 keyword args
+-   如果沒有任何預設值被指定，它們就是 required keyword args
 -   `def func(*args, named):`
-    - `named` is a required keyword arg
--   To specify required keyword args without allowing variable positional args use `*`
+    - `named` 是 required keyword arg
+-   若想實作一定只能用 required keyword args 而不允許 positional args 請用 `*`
 -   `def func(arg1, *, named)`
-    - named is a required kwarg
-    - func must take exactly one pos arg and one kwarg
+    - named 是 required kwarg
+    - func 必須只能傳入一個 pos arg 與一個 kwarg
 
 
 --
-##### advanced
+##### 進階
 ### Annotations
 
     def func(name: str, hight: float = 1.90)-> int:
         pass
 
--   Function arguments and return values can be annotated
--   Python does not enforce any meaning to annotations
--   Read further on [PEP 3107](https://www.python.org/dev/peps/pep-3107/) and [PEP 484](https://www.python.org/dev/peps/pep-0484/)
+-   函式參數與回傳值可被注釋 (annotated)
+-   Python 不會強制任何語意在注釋中
+-   欲知詳情請參閱 [PEP 3107](https://www.python.org/dev/peps/pep-3107/) and [PEP 484](https://www.python.org/dev/peps/pep-0484/)
 
 ---
 
-##### advanced
-# Closures, Global and Non-Local
+##### 進階
+# 閉包 (Closures), Global 與 Non-Local
 <!-- .slide: data-background="img/global.jpeg" -->
 
 --
 
-### Closures
+### 閉包 (Closures)
 
     def list_fruits():
         fruits = ['bannana', 'apple']
@@ -223,16 +221,15 @@ assert person_details(name='Mike', age=28) == 'Mike is 28 years old'
     fruit_list = list_fruits()
     fruit_list()
 
-    # output:
+    # 輸出
     ['bannana', 'apple']
 
 
 --
 
--   A function that knows about variable defined outside it's scope.
--   `show()` is a closure because it knows about `fruits`
--   Closures are read-only: adding `fruits += ['kiwi']` inside `show()` will result
-    in `UnboundLocalError` exception.
+-   一個可以知道定義在它的 scope 外的變數定義的函式。
+-   `show()` 是一個 closure 因為它知道 `fruits` 的值
+-   Closures 是唯讀的： 於 `show()` 執行 `fruits += ['kiwi']` 會觸發 `UnboundLocalError` 例外。
 
 --
 
@@ -243,10 +240,10 @@ assert person_details(name='Mike', age=28) == 'Mike is 28 years old'
         global a
         a += 1
 
--   Changing global state can be dangerous, so Python requires you to declare it explicitly
--   `global` can circumvent read-only closures
--   the `global` keyword declares certain variables in the current code block to reference the global scope
--   Variables following global do not need to be bound already
+-   更改全域的變數狀態有可能是危險的，所以 Python 要求你必須明確宣告
+-   `global` 可以規避唯讀的 closures
+-   `global` 關鍵字宣告了區塊範圍的變數，變成全域範圍
+-   宣告為全域的變數不用事先綁定
 
 --
 
@@ -260,15 +257,15 @@ assert person_details(name='Mike', age=28) == 'Mike is 28 years old'
             a += 1
         func()
 
--   Python3 only.
--   `nonlocal` declares certain variables in the current code block to reference the nearest enclosing scope.
--   If the nearest scope is the global scope then nonlocal raises a `SyntaxError`
--   See [PEP 3104](https://www.python.org/dev/peps/pep-3104/)
+-   Python 3 限定
+-   `nonlocal` 宣告區塊範圍的變數，指涉到最接近的上層區塊範圍 (enclosing scope)
+-   如果最接近的上層區塊範圍是全域範圍，則引發 `SyntaxError`
+-   參考 [PEP 3104](https://www.python.org/dev/peps/pep-3104/)
 
 
 ---
 
-##### advanced
+##### 進階
 #Functional Programming
 <!-- .slide: data-background="img/lambda.jpg" -->
 --
