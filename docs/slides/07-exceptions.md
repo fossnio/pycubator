@@ -3,16 +3,16 @@
 
 ---
 
-# Catching Exceptions 
+# 捕捉例外
 
 --
 
-### Python handles all errors with exceptions.
+### Python 使用例外來處理所有的錯誤。
 
-An exception is a signal that an error or other unusual condition has occurred.
+例外是一種用來警示發生錯誤或其他非正常的狀況的機制。
 
 --
-### Catching an exception
+### 捕捉例外
 
     try:
         execute_some_code()
@@ -21,7 +21,7 @@ An exception is a signal that an error or other unusual condition has occurred.
 
 --
 
-### Catching all exceptions
+### 捕捉所有例外
 
     try:
         execute_some_code()
@@ -31,25 +31,25 @@ An exception is a signal that an error or other unusual condition has occurred.
 
 --
 
--   Don't do it.
--   Catching too broad exceptions is potentially dangerous.
--   Among others, this "wildcard" handler will catch:
+-   不要這樣做。
+-   捕捉太廣泛的例外狀況有時候蠻危險的。
+-   別的就不先講，這種 "廣泛" 的處理將會捕捉到：
     -   system exit triggers
-    -   memory errors
-    -   typos
-    -   anything else you might not have considered
+    -   記憶體錯誤
+    -   打錯字
+    -   其他你沒想到的狀況
 
 --
-###### Exercise
-### Divide by zero
+###### 練習
+### 被 0 除
 
--   Try to divide `1/0`. What happens?
--   Catch the exception and tell the user he cannot divide by zero.
+-   試試看除式 `1/0` 。會發生什麼事？
+-   試試看捕捉這個例外並告知使用者不能除以 0。
 
 --
-### Catching multiple exceptions
+### 捕捉多個例外
 
-Handling them all the same way
+用一樣的方式處理它們
 
     try:
         execute_some_code()
@@ -59,7 +59,7 @@ Handling them all the same way
 
 --
 
-Handling them separately
+個別處理它們
 
     try:
         execute_some_code()
@@ -77,19 +77,16 @@ Handling them separately
 
 Look Before You Leap
 
-> \[...\] explicitly tests for pre-conditions before making calls or
-lookups. This style contrasts with the EAFP approach and is
-characterized by the presence of many if statements.
+> \[...\] 在呼叫或查找之前明確的對前提條件做測試。
+這種風格跟 EAFP 對比起來，它的特色是會有很多 if 敘述存在。
 
 --
 
 ### EAFP
 Easier to Ask for Forgiveness than Permission
-> \[...\] assumes the existence of valid keys or attributes and catches
-exceptions if the assumption proves false. This clean and fast style
-is characterized by the presence of many try and except
-statements. The technique contrasts with the LBYL style common
-to many other languages such as C.
+> \[...\] 假設一切前提條件都是沒問題，若假設是錯誤的，使用例外捕捉處理。
+這種乾淨且快速的程式碼風格會出現許多 try 與 except 敘述。
+這種程式碼風格和 LBYL 風格形成對比，而後者是其他程式語言中常見的，像是 C。
 
 --
 
@@ -112,30 +109,30 @@ to many other languages such as C.
 --
 
 ### When to use
->"All errors are exceptions, but not all exceptions are errors"
+>"所有的錯誤皆是例外，但並非所有的例外皆是錯誤"
 
-Use exception handling to gracefully recover from application errors.
-But: It's perfectly allowed, and sometimes necessary, to utilize
-exception handling for general application control flow. EOFError, for example.
+使用例外處理來優雅的處理應用程式的錯誤。
+但是：使用例外處理來處理應用程式的控制流程是完全被允許，甚至勢必要的。
+比如 EOFError。
 
 ---
 
-# Raising, Accessing and Propagating 
+# 引發例外、取用例外物件、與往外拋出例外 
 
 --
 
-### Raising exceptions
+### 引發例外
 
-Exceptions can be raised using `raise <exception>` with optional arguments.
+例外可使用 `raise <exception>` 語法引發，也可以夾帶選用的參數。
 
     raise RuntimeError()
-    raise RuntimeError("error message")
+    raise RuntimeError("錯誤訊息")
 
 --
 
-### Accessing the exception
+### 取用例外
 
-Use "as" to access the exception object
+使用 "as" 去取用例外物件
 
     try:
         raise RuntimeError("o hai")
@@ -145,10 +142,10 @@ Use "as" to access the exception object
 
 --
 
-### Propagating exceptions
+### 往外拋出例外
 
-Try-blocks can be nested;
-All exceptions propagate to the top-level "root exception handler" if uncaught.
+Try 區塊可以是巢狀的；
+所有往外拋出的例外若沒有任何攔截，會一路傳遞到最上層的 "root 例外處理常式"。
 
     try:
         try:
@@ -159,14 +156,14 @@ All exceptions propagate to the top-level "root exception handler" if uncaught.
         print('Outer')
 
 
-The (default) root exception handler terminates the Python process.
+(預設的) root 例外處理常式會停止 Python 的行程。
 
 --
 
-### Propagating exceptions
+### 往外拋出例外
 
-Propagation can be forced by using raise without arguments,
-this re-raises the most recent exception.
+往外拋出例外可以使用 raise 不帶任何參數觸發，
+這將會重複拋出最近一次的例外。
 
     try:
         try:
@@ -178,25 +175,25 @@ this re-raises the most recent exception.
         print('Outer')
 
 
-This is useful for e.g. exception logging.
+這在某些情況下很有用，比如紀錄例外。
 
 --
-### Practice
+### 練習
 
--   Read this [numbers.txt](content/exercises/numbers.txt) file.
--   Add the integers in the file together, and print the sum at the end.
--   You need to except the following exceptions and let the user know the problem:
-    - `IOError`: if there is a problem opening the file.
-    - `ValueError`: if the line read is not an integer.
-    - All other types: if any other exception arise, catch it and say 'unexpected error occurred'
+-   讀入檔案 [numbers.txt](content/exercises/numbers.txt)。
+-   將檔案中的整數都讀入，並在最後加總並印出。
+-   你必須預期有以下的例外，並讓使用者知道：
+    - `IOError`: 如果開啟檔案發生問題。
+    - `ValueError`: 如果讀入的該行不是整數。
+    - 其他狀況: 如果有其他例外被引發，捕捉它並顯示 '未預期的例外發生了'。
 
 ---
 
-# Finally and Else
+# Finally 與 Else
 
 --
 ### Finally
-Code in the `finally` block will always be executed (unless Python crashes completely).
+在 `finally` 區塊中的程式碼一定會被執行 (除非 Python 行程整個掛了)。
 
     try:
         open_file()
@@ -208,7 +205,7 @@ Code in the `finally` block will always be executed (unless Python crashes compl
 --
 
 ### Else
-Code in the `else` block will be executed when no exception is raised
+在 `else` 區塊的程式碼若沒有例外被引發時才會執行。
 
     try:
         open_file()
@@ -219,11 +216,11 @@ Code in the `else` block will be executed when no exception is raised
 
 ---
 
-# Writing exceptions
+# 撰寫例外
 
 --
-### Inheritance
--   Exceptions are matched by superclass relationships.
+### 繼承
+-   例外將被捕捉，如果處理例外時指定例外，則繼承自該例外的子類別皆會被捕捉。
     -   RuntimeError
     -   StandardError
     -   Exception
@@ -231,29 +228,29 @@ Code in the `else` block will be executed when no exception is raised
 
 --
 
-### Exception matching
-- exception hierarchies can be designed.
-- For example, `OverflowError`, `ZeroDivisionError` and `FloatingPointError`
-are all subclasses of `ArithmeticError`.
-- Just write a handler for `ArithmeticError` to catch any of them.
+### 例外比對
+- 例外的繼承關係是可以自行設計的。
+- 比如， `OverflowError`, `ZeroDivisionError` 與 `FloatingPointError`
+都是繼承自 `ArithmeticError`.
+- 只要寫個常式去處理 `ArithmeticError` 就可以一網打盡。
 
 --
 
-### Writing your own
-It's as simple as
+### 自己寫一個
+這很簡單只要這樣
 
     class MyException(Exception):
         pass
 
 --
-###### Exercise
-### Write your own exception!
--   Create a function called `guess_my_name` that:
-    -   Takes user input.
-    -   Checks if the user guessed your name correctly
-    -   Throws an exception `NotMyName` if not.
+###### 練習
+### 寫自己的例外！
+-   建立一個函式名為 `guess_my_name`：
+    -   處理使用者的輸入
+    -   確認使用者是否猜對你的名字
+    -   如果沒猜對，拋出 `NotMyName` 例外
 
--   Call that function:
-    -   In a while loop, call that function,
-    -   if `NotMyName` exception is caught stay in the loop.
-    -   else exit and print 'success!'
+-   呼叫這個函式：
+    -   在 while 迴圈中，呼叫該函式，
+    -   如果 `NotMyName` 例外被捕捉則繼續在迴圈內執行。
+    -   否則印出 '成功！' 並離開。
