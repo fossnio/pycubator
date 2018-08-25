@@ -4,32 +4,32 @@
 
 ---
 
-# Positional 與 Named Arguments
+# 位置參數與關鍵字參數
 <!-- .slide: data-background="img/steen_argument_over_a_card_game.jpg" -->
 <small>Jan Steen, Argument over a Card Game, Wikimedia Commons.</small>
 
 --
 
-### Positional Arguments
+### 位置參數
 
     def func(arg1, arg2, arg3):
         pass
 
     func(a, b, c)
 
--   `arg1`, `arg2` 與 `arg3` 就是 positional arguments
--   當呼叫 `func` 時，一定要傳入 3 個 arguments ，錯誤數量的參數會引發 `TypeError` 例外
+-   `arg1`, `arg2` 與 `arg3` 就是位置參數
+-   當呼叫 `func` 時，一定要傳入 3 個參數，錯誤數量的參數會引發 `TypeError` 例外
 -   傳入的順序決定它會綁定至哪個參數
 
 --
-### Named Arguments
+### 關鍵字參數
 
     def say(arg1, named1, named2):
         print(arg1, named1, named2)
 
     say('make', named2='day', named1='my')
 
-    # output
+    # 輸出
     make my day
 
 -   因為可以指定名稱，所以順序可以任意
@@ -37,22 +37,22 @@
 
 --
 
-### Default Arguments
+### 預設參數
 
     def func(arg1, named1=val1, named2=val2):
         pass
 
     func(a, named2=b, named1=c)
 
--   Default args 可以接在一般的 args 後面
+-   預設參數可以接在一般的參數後面
 -   `val1` 與 `val2` 就是那些變數的預設值
 -   如果沒有傳入對應的參數，那預設值會被使用
 
 --
 ##### 進階
-### Default Arguments 常見錯誤
+### 預設參數常見錯誤
 
--   Default arguments 會在定義函式時被執行
+-   預設參數會在定義函式時被執行
 -   在任何呼叫中，會使用初始計算完的結果作為其值。
 -   如果該預設值是可變動的型別，對於該參數的變動將會讓後續的呼叫都受到影響
 -   `def func(a=[])` 將會改變其後所有呼叫的預設值
@@ -74,7 +74,7 @@
 
 ---
 
-# Args 與 KWArgs
+# 參數與關鍵字參數
 <!-- .slide: data-background="img/argument-shadows.jpg" -->
 
 --
@@ -88,7 +88,7 @@
      # 輸出
     (2, 3, 4)
 
--   任意數量的 positional arguments 可被傳入
+-   可傳入任意數量的位置參數
 -   可以取任何名稱，但使用 `args` 是慣例
 -   `args` 是一個包含 0 或多個物件的 tuple
 
@@ -119,7 +119,7 @@
 -   於最後的位置使用 `**kwargs`
 -   可取任何名稱，但使用 `kwargs` 是慣例
 -   kwargs 是個存放字串為鍵的 dictionary
--   kwargs 的鍵名要對應 keyword args
+-   kwargs 的鍵名要對應關鍵字參數
 
 --
 ###### 練習
@@ -142,7 +142,7 @@ assert person_details(name='Mike', age=28) == 'Mike is 28 years old'
     6
 
 - `l` 是可疊代的
-- 它會被展開，就像是 `bar` 的 positional arguments 一樣
+- 它會被展開，就像是 `bar` 的位置參數一樣
 
 --
 ### 在函式呼叫中使用 `**`
@@ -177,28 +177,28 @@ assert person_details(name='Mike', age=28) == 'Mike is 28 years old'
 
 --
 ##### 進階
-### Required Keyword Args
+### 必要關鍵字參數
 
 -   Python 3 限定
--   任何在 `*args` 之後的參數都是 keyword args
--   如果沒有任何預設值被指定，它們就是 required keyword args
+-   任何在 `*args` 之後的參數都是關鍵字參數
+-   如果沒有任何預設值被指定，它們就是必要關鍵字參數
 -   `def func(*args, named):`
-    - `named` 是 required keyword arg
--   若想實作一定只能用 required keyword args 而不允許 positional args 請用 `*`
+    - `named` 就是必要關鍵字參數
+-   若想實作只能有必要關鍵字參數而不允許位置參數，請在前面加上 `*`
 -   `def func(arg1, *, named)`
-    - named 是 required kwarg
-    - func 必須只能傳入一個 pos arg 與一個 kwarg
+    - named 是必要關鍵字參數
+    - func 只能傳入一個位置參數與一個關鍵字參數
 
 
 --
 ##### 進階
-### Annotations
+### 函式註解
 
     def func(name: str, hight: float = 1.90)-> int:
         pass
 
--   函式參數與回傳值可被注釋 (annotated)
--   Python 不會強制任何語意在注釋中
+-   函式參數與回傳值可被註解 (annotated)
+-   Python 不會強制任何語意在註解中
 -   欲知詳情請參閱 [PEP 3107](https://www.python.org/dev/peps/pep-3107/) and [PEP 484](https://www.python.org/dev/peps/pep-0484/)
 
 ---
@@ -266,70 +266,70 @@ assert person_details(name='Mike', age=28) == 'Mike is 28 years old'
 ---
 
 ##### 進階
-#Functional Programming
+# 函式編程
 <!-- .slide: data-background="img/lambda.jpg" -->
 --
 
-### Background (1)
+### 背景 (1)
 
--   Functional programming started with lambda(&Lambda;) calculus
--   Alternative to Turning machines for exploring computability
--   Expresses programs as functions operating on other functions
--   Functional programming attempts to make it easier to reason about program behavior
--   No data states allows for easier multi threaded programing
+-   函式編程始於 lambda(&Lambda;) 演算
+-   一種用來探索如何將機器轉成更適用於計算的手段
+-   將程式表達成函式敘述並與其他函式互動
+-   函式編程試圖讓推論程式的行為更加簡單
+-   避免改變資料狀態以讓多執行緒的程式更加容易撰寫
 
 --
 
-### Background (2)
--   Python data is mutable and allows side-effects
--   Has some functional concepts
--   Not an ideal functional programming environment
+### 背景 (2)
+-   Python 的資料型別有些是可變動的，也會有 side-effects
+-   有一些函式編程的概念在裡面
+-   不是一個理想的函式編程開發環境
 
 --
 
 ### First Class Functions
--   A **higher order function** is a function that does at least one of the following:
-    - Takes a function as one of its inputs
-    - Outputs a function
+-   **higher order functions** 是一種擁有至少以下一個行為的函式：
+    - 接受函式作為它的參數之一
+    - 回傳一個函式
 
--   You can use functions anywhere you would use a value
--   Functions are immutable so you can use them as dictionary keys
--   Functions can be the return value of another function
+-   你可以將函式當作變數般去使用
+-   函式是不可變動的所以可用來作為 dictionary 的 key
+-   函式可以作為另一個函式的傳回值
 
 --
 
-### &lambda; (lambda) Functions
+### &lambda; (lambda) 函式
 
     f = lambda x: x + 1
 
--   Anonymous functions are function objects without a name
--   lambdas can have the same arguments as regular functions:
+-   匿名函式是沒有名字的函式物件
+-   lambdas 可以跟一般函式一樣擁有參數：
 `lambda arg, *args, named=val, **kwargs: ret`
--   lambdas must be one-liners and do not support annotations
--   'syntactic sugar' to pass short functions to other functions.
+-   lambdas 必須寫成一行且不支援 annotations
+-   一種用來將短的函式傳給其他函式的 '語法糖衣'。
 
 --
 
 ### Higher Order Functions
--   The most common are `map` and `filter`
--   `map(f, seq)` returns an iterator containing each element of `seq` but with `f` applied
--   `filter(f, seq)` returns an iterator of the elements of seq where `bool(f(seq[i]))` is `True`
+-   最常見到的就是 `map` 與 `filter`
+-   `map(f, seq)` 回傳一個將 `seq` 中每個元素都傳進 `f` 作為函式參數並取得回傳值的疊代物件
+-   `filter(f, seq)` 回傳一個將 `seq` 中每個元素 `i` 傳入 `bool(f(seq[i]))` 其結果為 `True` 的疊代物件
 
 
 --
 
-### Functions as Keyword Args
+### Functions 作為 Keyword 參數
 
--   Many functions will accept another function as a kwarg `sorted(seq, key=f)`
--   `sorted` will call `f` on the elements to determine order
--   The elements in the resulting list will be the same objects in seq
--   Have the key return a tuple to sort multiple fields
--   `min(seq, key=f)` and `max(seq, key=f)` behave similarly
--   This is a good spot for lambda
+-   很多函式接受另一個函式作為 kwarg `sorted(seq, key=f)`
+-   `sorted` 會對每一個元素呼叫 `f` 以決定順序
+-   產生的結果其元素將會與原本在 `seq` 中的元素為相同物件
+-   若 key 對應的值為 tuple 則可以用來根據多個欄位排序
+-   `min(seq, key=f)` 和 `max(seq, key=f)` 行為類似
+-   這是 lambda 派上用場的好地方
 
 --
 
-### Partial Application
+### Partial Function Application
 
     from functools import partial
     def add(x, y):
@@ -337,26 +337,26 @@ assert person_details(name='Mike', age=28) == 'Mike is 28 years old'
 
     add_3 = partial(add, 3)
 
--   Partial application creates a new function by supplying an existing function with some of its arguments
+-   Partial function application 會建立一個新的函式，建立時傳入一個已存在的函式與部份參數，使其呼叫行為改變
 
 ---
 
-##### advanced
-# Decorators
+##### 進階
+# 裝飾器
 <!-- .slide: data-background="img/decorators.jpg" -->
 
 --
 
-### Decorators
+### 裝飾器
 
--   Decorators are transformations on functions
--   A function that takes in a function and returns a modified function
+-   裝飾器是函式的另一種轉換寫法
+-   是一個接收函式為參數，然後回傳行為更動後的函式的函式
 
         @dec
         def func(arg1, arg2, ...):
             pass
 
--   Is equivalent to:
+-   和以下相同
 
         def func(arg1, arg2, ...):
             pass
@@ -365,39 +365,39 @@ assert person_details(name='Mike', age=28) == 'Mike is 28 years old'
 
 --
 
-### Decorator Arguments
+### 裝飾器參數
 
--   A decorator can take arguments
+-   一個裝飾器可以傳入多個參數
 
         @decmaker(argA, argB, ...)
         def func(arg1, arg2, ...):
             pass
 
--   Is equivalent to:
+-   和以下相同：
 
         def func(arg1, arg2, ...):
             pass
         func = decmaker(argA, argB, ...)(func)
 
 --
-### Decorator example
+### 裝飾器範例
 
     import urllib
     from functools import lru_cache
 
     @lru_cache(maxsize=32)
     def get_pep(num):
-        'Retrieve text of a Python Enhancement Proposal'
+        '取得 PEP 文字'
         resource = 'http://www.python.org/dev/peps/pep-{:04d}'.format(num)
         try:
             with urllib.request.urlopen(resource) as s:
                 return s.read()
         except urllib.error.HTTPError:
-            return 'Not Found'
+            return '找不到'
 
 --
 
-### Multiple Decorators
+### 多重裝飾器
 
     @dec1
     @dec2
@@ -405,7 +405,7 @@ assert person_details(name='Mike', age=28) == 'Mike is 28 years old'
         pass
 
 
--   Is equivalent to:
+-   和以下相同：
 
         def func(arg1, arg2, ...):
             pass
