@@ -116,7 +116,7 @@ apple.print_it()
 
 --
 ##### 進階
-### 模組是 singletons
+### 模組是 singleton
 
     # stuff.py
     fruits = ['Pineapple']
@@ -139,6 +139,6 @@ apple.print_it()
     module_b.foo()
     print(stuff.fruits)
 
-    # output
+    # 輸出
     ['Pineapple', 'Apple', 'Banana']
 
