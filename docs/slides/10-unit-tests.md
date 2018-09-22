@@ -2,48 +2,46 @@
 ### Pycubator
 
 --
-### What for?
+### 為何？
 
--   Fixing defects early costs less than fixing them late.
--   Defects removed in Unit Testing cost around 10 times less than defects removed in Functional
-    verification.
--   And around 40 times less than defects removed by Systems or Integration testing.
-
---
-
-### What is Unit Testing?
-
-
--   A unit test isolates a part of the program
--   Tests a single behaviour
--   Clearly identifies any reason for failure
--   Documents expected behaviour
--   Runs quickly
+-   愈早修正錯誤成本愈低。
+-   在單元測試所找到的錯誤，其成本比功能測試階段才找到的錯誤低 10 倍
+-   比在系統或整合測試階段才找到錯誤的成本低 40 倍
 
 --
 
-### A test is not a unit test if
+### 什麼是單元測試？
 
-*   It talks to the database
-*   It communicates across the network
-*   It touches the file system
-*   It can't run at the same time as other unit tests
-*   You have to do special things to your environment (such as editing config files) to run it
 
-Source: [Michael Feathers' blog](http://www.artima.com/weblogs/viewpost.jsp?thread=126923) (2005)
+-   針對程式的某部份行為做的隔離單元測試
+-   測試單一行為
+-   對於任何原因所產生的錯誤可簡明的確認其發生原因
+-   可作為程式預期行為的文件
+-   執行快速
+
+--
+
+### 如滿足以下條件之一，則該測試就不算是單元測試：
+
+*   它存取資料庫
+*   它存取網路
+*   它存取檔案系統
+*   它不能跟其他單元測試同時執行
+*   你必須針對運行環境做一些特殊調整（比如編輯設定檔）才能運行它
+
+來源： [Michael Feathers' blog](http://www.artima.com/weblogs/viewpost.jsp?thread=126923) (2005)
 
 ---
 
-# Unit test demonstration
+# 單元測試展示
 
 --
 
-### Interleave
+### 聯集
 
--   Lets write a function to interleave two lists
--   It will be okay if one list is longer than the other
--   Before we start writing the code, we should know what the function should produce for all types
-    of inputs:
+-   我們來寫一個可將兩個 lists 聯集的函式
+-   其中一個 list 長度比另一個長是沒問題的
+-   在我們開始寫程式碼以前，我們應該要知道這個函式應該會滿足以下行為：
 
         interleave([], []) # -> []
         interleave([1,5,3], ["hello"]) # -> [1,"hello",5,3]
@@ -51,7 +49,7 @@ Source: [Michael Feathers' blog](http://www.artima.com/weblogs/viewpost.jsp?thre
 
 --
 
--   Write the test first, `interleave_test.py`:
+-   先寫測試， `interleave_test.py`:
 
         from interleave import interleave
         import unittest
@@ -73,14 +71,14 @@ Source: [Michael Feathers' blog](http://www.artima.com/weblogs/viewpost.jsp?thre
 
 --
 
--   Write a stub, `interleave.py`:
+-   寫一個 stub, `interleave.py`:
 
         def interleave(a, b):
             return None
 
 --
 
--   Run the test
+-   執行測試
 
         $ python interleave_test.py
         F
@@ -99,7 +97,7 @@ Source: [Michael Feathers' blog](http://www.artima.com/weblogs/viewpost.jsp?thre
 
 --
 
--   Now write the code
+-   現在來寫程式碼
 
         def interleave(a, b):
             """Return the interleaving of two sequences as a list."""
@@ -107,7 +105,7 @@ Source: [Michael Feathers' blog](http://www.artima.com/weblogs/viewpost.jsp?thre
 
 --
 
--   Test again
+-   再測試一次
 
         $ python interleave_test.py
         E
@@ -127,7 +125,7 @@ Source: [Michael Feathers' blog](http://www.artima.com/weblogs/viewpost.jsp?thre
         FAILED (errors=1)
 --
 
--   Fix the code
+-   修正程式碼
 
         from itertools import izip_longest
 
@@ -137,7 +135,7 @@ Source: [Michael Feathers' blog](http://www.artima.com/weblogs/viewpost.jsp?thre
 
 --
 
--   Rerun the test
+-   重跑測試
 
         $ python interleave_test.py
         .
@@ -147,14 +145,14 @@ Source: [Michael Feathers' blog](http://www.artima.com/weblogs/viewpost.jsp?thre
         OK
 
 ---
-# Resources and exercise
+# Resources and exercise資源與練習
 
 --
-### Resources
+### 資源
 -   Ray Toal, [unittest in 5 minutes](http://www.slideshare.net/raytoal/unittest-in-5-minutes)
 -   Python stdlib [documentation](https://docs.python.org/3/library/unittest.html#module-unittest)
 
 
 --
-###### Exercise
+###### 練習
 [Unit testing](http://lms.10x.org.il/item/47/)
