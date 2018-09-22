@@ -7,7 +7,7 @@
 
 --
 
--   `time.time` return the time in seconds since the epoch as a floating point number.
+-   `time.time` epoch 至今的秒數，以浮點數回傳之。
 
         import time
         t0 = time.time()
@@ -16,21 +16,21 @@
         t1 = time.time()
         print(t1 - t0)
 
-        # output:
+        # 輸出：
         1.1572110652923584
 
 --
 
--   `time.sleep` Suspend execution for the given number of seconds.
+-   `time.sleep` 暫停執行傳入的秒數>
 
         import time
-        print('Processing, please wait, ...')
+        print('處理中，請等待...')
         time.sleep(2)
-        print('Done.')
+        print('完成。')
 
-        # output:
-        Processing, please wait, ...
-        Done.
+        # 輸出：
+        處理中，請等待...
+        完成。
 
 ---
 
@@ -39,12 +39,12 @@
 --
 ### Logging
 
--   In large and long running programs we need more sophisticated printing.
--   The logging package enables us to easily log the current state and timestamp of our program
+-   我們需要更完整的傾印機制以用在大型且長時間執行的程式中。
+-   ogging 套件讓我們更容易的在程式中紀錄目前的狀態與時間戳記。
 
 --
 
--   Basic usage:
+-   基本用法：
 
         logging.debug('Alltems operational')
         logging.info('Airspeed knots')
@@ -52,47 +52,47 @@
         logging.error('Nol. Trying to glide.')
         logging.critical('Glide attempt failed. About to crash.')
 
-        # output:
+        # 輸出：
         WARNING:root:Lowfuel
         ERROR:root:Nol. Trying to glide.
         CRITICAL:root:Glide attempt failed. About to crash.
 
--   Why can't we see the `debug` and `warning` messages?
+-   為何我們看不到 `debug` 與 `warning` 訊息？
 
 --
 
--   We can determine the verbosity of the log with `setLevel`
+-   我們可以使用 `setLevel` 來設定紀錄的傾印等級
 
         logging.root.setLevel(logging.DEBUG)
         logging.debug('Alltems operational')
         logging.info('Airspeed knots')
 
-        # output
+        # 輸出：
         DEBUG:root:Alltems operational
         INFO:root:Airspeed knots
 
 --
 
--   With `basicConfig` we can create customisations that fits our needs.
--   For example make our logs more informative:
+-   我們可以使用 `basicConfig` 來客製化紀錄以符合我們的需求。
+-   比如我們可以讓紀錄提供更多資訊：
 
         logging.basicConfig(format='[%(levelname)s %(asctime)s %(module)s:%(lineno)d]  %(message)s',
                             level=logging.DEBUG)
-        logging.debug("you'll see a lot more information now...")
+        logging.debug("你現在會看到更多的資訊了...")
 
         # output
-        [DEBUG 2015-07-14 22:59:59,160 <ipython-input-60-8bd2b8d57226>:5]  you'll see a lot more information now...
+        [DEBUG 2015-07-14 22:59:59,160 <ipython-input-60-8bd2b8d57226>:5]  你現在會看到更多的資訊了...
 
 --
 
--   Or logging to a file:
+-   或是紀錄到檔案中：
 
         logging.basicConfig(filename='example.log',level=logging.DEBUG)
-        logging.debug('This message should go to the log file')
+        logging.debug('這行訊息會紀錄到檔案中')
 
 --
 
--   Resources:
+-   資源：
     -   [Logging module docs](https://docs.python.org/3.5/library/logging.html)
     -   [Logging howto](https://docs.python.org/3.5/howto/logging.html)
     -   [Become a Logging Expert in 30 Minutes](https://youtu.be/24_4WWkSmNo), Gavin M. Roy, PyCon 2013
@@ -103,35 +103,35 @@
 
 --
 ### OS
--   `os.listdir` return a list containing the names of the entries in the directory given by path:
+-   `os.listdir` 回傳指定目錄下所有檔案與目錄的 list：
 
         import os
 
         for filename in os.listdir('.'):
             print(filename)
 
-        # output
+        # 輸出
         The-standard-library.ipynb
         example.log
         unit-tests.ipynb
 
 --
 
--   `os.path.join` concatenate paths (according to OS):
+-   `os.path.join` 連結路徑 (根據 OS 決定)：
 
         import os
 
         home = '/home/user'
         os.path.join(home, 'Downloads')
 
-        # output
+        # 輸出
         '/home/user/Downloads'
 
--   `os.path.splitext` splits the file into root, extension:
+-   `os.path.splitext` 依據檔案延伸副檔名分割路徑：
 
         os.path.splitext('/home/noam/Downloads/xom.csv')
 
-        # output
+        # 輸出
         ('/home/noam/Downloads/xom', '.csv')
 
 --
@@ -140,7 +140,7 @@
 
         os.path.getsize('The-standard-library.ipynb')
 
-        # output
+        # 輸出
         8440
 
 
@@ -149,21 +149,21 @@
 
         os.path.isdir('The-standard-library.ipynb')
 
-        # output
+        # 輸出
         False
 
 ---
 
-# Sys and argparse
+# Sys 與 argparse
 
 --
 ### Sys
-- `sys.argv[0]` contains file name
-- `sys.argv[1:]` contains arguments (if any)
+- `sys.argv[0]` 包含本身檔名
+- `sys.argv[1:]` 包含命令列參數（如果有的話）
 
 --
 
-#### Example
+#### 範例
 -   test.py:
 
         import sys
@@ -176,7 +176,7 @@
         if __name__ == '__main__':
             print(main(sys.argv))
 
--   cmdline:
+-   命令列：
 
         $ python test.py 5 10
         15
@@ -184,31 +184,31 @@
 --
 
 ### argparse
--   A standard library solution for parsing script arguments
--   Generates help messages
--   Robust and clear
--   learn more at [argparse tutorial](https://docs.python.org/3/howto/argparse.html)
+-   標準函式庫中用來處理指令稿的命令列參數
+-   產生求助訊息Generates help messages
+-   強固且清晰
+-   更多資訊請參考 [argparse tutorial](https://docs.python.org/3/howto/argparse.html)
 --
 
-### argparse example
+### argparse 範例
 -   test.py:
 
         import argparse
         parser = argparse.ArgumentParser()
-        parser.add_argument("square",
-                            help="display a square of a given number",
+        parser.add_argument("二次方",
+                            help="顯示參數的二次方運算結果",
                             type=int)
         args = parser.parse_args()
         print(args.square**2)
 
--   cmdline:
+-   命令列：
 
         $ python3 test.py 4
         16
 
 --
 
-###### Exercises
+###### 練習
 
 [The standard library](http://lms.10x.org.il/item/144/)
 
@@ -218,12 +218,11 @@
 
 --
 
-The subprocess module provides a consistent interface to creating and working with additional
-processes.
+Subprocess 模組提供了一致性的介面以用來建立與協同其他的行程。
 
 --
-### Simple call
--   To run an external command without interacting with it, use the `call()` function.
+### 簡單呼叫
+-   若要呼叫外部指令且不與其互動，則使用 `call()` 函式。
 
         import subprocess
 
@@ -231,29 +230,27 @@ processes.
 
 --
 
--   The return value from `call()` is the exit code of the program.
--   The caller is responsible for interpreting it to detect errors.
+-   `call()` 的回傳值就是程式執行結束的 exit code。
+-   呼叫者有責任去確認回傳值以檢驗是否有錯誤發生。
 
 --
-### Error handling
+### 錯誤處理
 
--   The `check_call()` function works like `call()` except that the exit code is checked,
-    and if it indicates an error happened then a `CalledProcessError` exception is raised.
+-   `check_call()` 函式運作跟 `call()` 相同，並會額外檢查回傳值，若有錯誤則引發 `CalledProcessError` 例外。
 
         import subprocess
 
         subprocess.check_call(['false'])
 
 --
-### Capturing Output
--   The standard input and output channels for the process started by `call()` are bound to
-    the parent’s input and output.
--   Use `check_output()` to capture the output for later processing.
+### 取得輸出
+-   因 `call()` 而被呼叫的子行程，其標準輸入輸出會綁定在父行程的輸入和輸出。
+-   使用 `check_output()` 以取得輸出以便於後續處理。
 
         import subprocess
 
         output = subprocess.check_output(['ls', '-1'])
-        print('Have {} bytes in output'.format(len(output)))
+        print('輸出共有 {} 位元組'.format(len(output)))
         print(output)
 
 ---
@@ -262,8 +259,7 @@ processes.
 
 --
 
--   The simplest way to use a Thread is to instantiate it with a target function and call `start()`
-    to let it begin working.
+-   使用 Thread 最簡單的方法就是傳入要執行的函式並實體化它，然後呼叫 `start()` 使其開始運作。
 
         import threading
 
@@ -278,15 +274,14 @@ processes.
 
 --
 
--   Many time we run threads and wish that the main process will collect their result, to do so
-    we use the `join` method
+-   很多時候我們會執行眾多個執行序，並希望主行程可以蒐集它們的執行結果，那可以用 `join` 方法：
 
         import threading, random, time
 
         def worker(num, sleep):
-            print('Worker #{} starts to sleep {} seconds '.format(num, sleep))
+            print('Worker #{} 開始休眠 {} 秒 '.format(num, sleep))
             time.sleep(sleep)
-            print('Worker #{} woke up '.format(num))
+            print('Worker #{} 醒來 '.format(num))
             return
 
         threads = []
@@ -301,6 +296,6 @@ processes.
 
 ---
 
-### Reference
+### 參考連結
 -   [pymotw](https://pymotw.com/2/) - Python module of the week
 -   Standard Library [documentation](https://docs.python.org/3/library)
