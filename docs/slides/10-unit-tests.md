@@ -27,7 +27,7 @@
 *   它存取網路
 *   它存取檔案系統
 *   它不能跟其他單元測試同時執行
-*   你必須針對運行環境做一些特殊調整（比如編輯設定檔）才能運行它
+*   你必須針對運行環境做一些特殊調整 (比如編輯設定檔) 才能運行它
 
 來源： [Michael Feathers' blog](http://www.artima.com/weblogs/viewpost.jsp?thread=126923) (2005)
 
@@ -71,7 +71,7 @@
 
 --
 
--   寫一個 stub, `interleave.py`:
+-   寫一個 stub `interleave.py`:
 
         def interleave(a, b):
             return None
@@ -145,7 +145,7 @@
         OK
 
 ---
-# Resources and exercise資源與練習
+# 資源與練習
 
 --
 ### 資源

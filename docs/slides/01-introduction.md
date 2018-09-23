@@ -21,7 +21,7 @@
 ### 為何要學 Python？
 
 * 簡單易學 (參考 [Python 現在已是全美頂尖大學最受歡迎的入門程式語言][usage])
-* 非常成熟的程式語言與開發社群，目前被 Google、Facebook(Instagram)、Microsoft、Dropbox 等大型企業使用。
+* 非常成熟的程式語言與開發社群，目前被 Google、Facebook (Instagram)、Microsoft、Dropbox 等大型企業使用。
 * 活躍於各種領域 - 網站開發、資料科學、系統管理維運、自動化、人工智慧，族繁不及備載。
 
 [usage]: http://cacm.acm.org/blogs/blog-cacm/176450-python-is-now-the-most-popular-introductory-teaching-language-at-top-us-universities/fulltext
@@ -214,7 +214,7 @@ In [1]:
 * 使用 `tab` 自動補全。
 * 在變數、函式、類別名稱等末端加上 `?` 可取得說明。
 * 可在 IPython 裡面執行一般的 shell 命令：`!ls`
-* `%magic`指令很酷。試試`%history`、`%save`以及`%pastebin`。
+* `%magic` 指令很酷。試試 `%history`、`%save` 以及 `%pastebin`。
 
 
 ---
@@ -282,8 +282,8 @@ In [1]:
 
 ### 什麼是直譯？
 
-* "直譯"程式語言是什麼意思？
-* "直譯"與"編譯"指的是實作方式，不是語言本身
+* "直譯" 程式語言是什麼意思？
+* "直譯" 與 "編譯" 指的是實作方式，不是語言本身
 * 最被廣泛被使用的 Python 實作 (CPython) 混合了上述兩個階段：
     * 將原始碼編譯成位元組碼 (.pyc 檔案)
     * 直譯位元組碼，一步一步的執行

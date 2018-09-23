@@ -21,7 +21,7 @@
 
 --
 
--   `time.sleep` 暫停執行傳入的秒數>
+-   `time.sleep` 暫停執行傳入的秒數：
 
         import time
         print('處理中，請等待...')
@@ -40,7 +40,7 @@
 ### Logging
 
 -   我們需要更完整的傾印機制以用在大型且長時間執行的程式中。
--   ogging 套件讓我們更容易的在程式中紀錄目前的狀態與時間戳記。
+-   logging 套件讓我們更容易的在程式中紀錄目前的狀態與時間戳記。
 
 --
 
@@ -159,7 +159,7 @@
 --
 ### Sys
 - `sys.argv[0]` 包含本身檔名
-- `sys.argv[1:]` 包含命令列參數（如果有的話）
+- `sys.argv[1:]` 包含命令列參數 (如果有的話)
 
 --
 
@@ -185,7 +185,7 @@
 
 ### argparse
 -   標準函式庫中用來處理指令稿的命令列參數
--   產生求助訊息Generates help messages
+-   產生求助訊息
 -   強固且清晰
 -   更多資訊請參考 [argparse tutorial](https://docs.python.org/3/howto/argparse.html)
 --
@@ -218,7 +218,7 @@
 
 --
 
-Subprocess 模組提供了一致性的介面以用來建立與協同其他的行程。
+Subprocess 套件提供了一致性的介面以用來建立與協同其他的行程。
 
 --
 ### 簡單呼叫

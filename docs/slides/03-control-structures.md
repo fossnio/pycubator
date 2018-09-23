@@ -45,7 +45,7 @@
         print('哈囉 {}!'.format(name))
 
 --
-### break 與 continue:
+### break 與 continue：
 
     SECRET = 'xyzzy'
 

@@ -183,9 +183,9 @@ Try 區塊可以是巢狀的；
 -   讀入檔案 [numbers.txt](content/exercises/numbers.txt)。
 -   將檔案中的整數都讀入，並在最後加總並印出。
 -   你必須預期有以下的例外，並讓使用者知道：
-    - `IOError`: 如果開啟檔案發生問題。
-    - `ValueError`: 如果讀入的該行不是整數。
-    - 其他狀況: 如果有其他例外被引發，捕捉它並顯示 '未預期的例外發生了'。
+    - `IOError`：如果開啟檔案發生問題。
+    - `ValueError`：如果讀入的該行不是整數。
+    - 其他狀況：如果有其他例外被引發，捕捉它並顯示 '未預期的例外發生了'。
 
 ---
 
@@ -198,7 +198,7 @@ Try 區塊可以是巢狀的；
     try:
         open_file()
     except IOError:
-        print('Exception caught')
+        print('抓到例外')
     finally:
         close_file()
 
@@ -210,9 +210,9 @@ Try 區塊可以是巢狀的；
     try:
         open_file()
     except IOError:
-        print('Exception caught')
+        print('抓到例外')
     else:
-        print('Everything went according to plan')
+        print('一切正常沒有例外發生')
 
 ---
 
@@ -230,8 +230,7 @@ Try 區塊可以是巢狀的；
 
 ### 例外比對
 - 例外的繼承關係是可以自行設計的。
-- 比如， `OverflowError`, `ZeroDivisionError` 與 `FloatingPointError`
-都是繼承自 `ArithmeticError`.
+- 比如 `OverflowError`, `ZeroDivisionError` 與 `FloatingPointError` 都是繼承自 `ArithmeticError`。
 - 只要寫個常式去處理 `ArithmeticError` 就可以一網打盡。
 
 --

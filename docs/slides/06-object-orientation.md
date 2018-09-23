@@ -44,7 +44,7 @@
 ### 私有方法的慣例語法
 
 -   開頭為底線的 `_` 變數名稱意思是：若要直接使用它風險自負
--   "We're all adults here": 你可以存取任何你想存取的變數
+-   "We're all adults here"：你可以存取任何你想存取的變數，但請自律
 
         class Circle:
             _pi = 3.14
@@ -267,8 +267,8 @@ print(c.area)
 
 - `super(cls, obj)` &srarr; `super(C, self)`
     - 如果你想要在類別外呼叫 super 時可以使用此語法，傳入類別名稱與對應的實體。
-    - Class that precedes cls in the MRO of obj
-    - It's bound &srarr; obj gets inserted into method calls
+    - 被呼叫的類別將是該實體物件的 MRO 順序最前的那一個
+    - 它是被綁定的 &srarr; 實體物件將會被插入方法呼叫
 - `super()`
     - 可用在該類別的實體方法中，可調用其父類別。
 
@@ -276,6 +276,6 @@ print(c.area)
 ## getattr
 - `x.value` &srarr; `getattr(x, 'value')`
 - 當參數名稱是在 runtime 時產生時很有用
-- `getattr(self, name)` 呼叫 `__getattribute__(self, name)` ，若不存在則再呼叫 `__getattr__(self, name)`
+- `getattr(self, name)` 呼叫 `__getattribute__(self, name)`，若不存在則再呼叫 `__getattr__(self, name)`
 - 定義 `__getattr__` 在需要指定預設值時很有用
 - `getattr(x, 'value', default)` 讓你在所有呼叫都失敗時仍然有個預設值

@@ -173,7 +173,7 @@ assert person_details(name='Mike', age=28) == 'Mike is 28 years old'
 
 
 -   只能在 Python 3 上跑
--   `a,*var_name = range(5)`: `var_name` 是一個含 0 或多個值的 list
+-   `a,*var_name = range(5)`：`var_name` 是一個含 0 或多個值的 list
 
 --
 ##### 進階
@@ -229,7 +229,7 @@ assert person_details(name='Mike', age=28) == 'Mike is 28 years old'
 
 -   一個可以知道定義在它的 scope 外的變數定義的函式。
 -   `show()` 是一個 closure 因為它知道 `fruits` 的值
--   Closures 是唯讀的： 於 `show()` 執行 `fruits += ['kiwi']` 會觸發 `UnboundLocalError` 例外。
+-   Closures 是唯讀的：於 `show()` 執行 `fruits += ['kiwi']` 會觸發 `UnboundLocalError` 例外。
 
 --
 

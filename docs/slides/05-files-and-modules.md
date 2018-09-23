@@ -13,18 +13,18 @@ The National Archives UK
 - `open(name, mode)` 回傳一個檔案物件
 - `name` 是要開啟的檔案路徑
 - `mode`：
-    - `'r'` (read): 檔案以唯讀模式開啟
-    - `'w'` (write): 檔案以唯寫模式開啟，且檔案內容整個清空重頭開始
-    - `'a'` (append): 類似 'w' 但內容不清空，繼續從檔案尾端繼續寫入
-    - `'x'`: 類似 'w' 但檔案必須不存在
-- `open(name)` 預設為唯讀模式開啟檔案： `open(name, 'rt')`
+    - `'r'` (read)：檔案以唯讀模式開啟
+    - `'w'` (write)：檔案以唯寫模式開啟，且檔案內容整個清空重頭開始
+    - `'a'` (append)：類似 'w' 但內容不清空，繼續從檔案尾端繼續寫入
+    - `'x'`：類似 'w' 但檔案必須不存在
+- `open(name)` 預設為唯讀模式開啟檔案：`open(name, 'rt')`
 
 --
 ### 關閉檔案
 - `f.close()`:
     - 釋放該檔案物件所佔用的資源
     - 將暫存尚未寫入的內容寫入硬碟
-- 可配合 `with` 陳述式使用:
+- 可配合 `with` 陳述式使用：
 
         with open('example.txt') as f: # 離開此區塊就自動釋放資源
             print(f.read())
@@ -61,10 +61,10 @@ The National Archives UK
 ### import 陳述式
 
 - 可使用其他 python 的檔案與函式庫
-- Imports: `import math`
-- Named imports: `import math as m`
-- Specific imports: `from math import pow`
-- Import all: `from math import *` (危險！只用在特別狀況！)
+- Imports：`import math`
+- Named imports：`import math as m`
+- Specific imports：`from math import pow`
+- Import all：`from math import *` (危險！只用在特別狀況！)
 
 --
 
